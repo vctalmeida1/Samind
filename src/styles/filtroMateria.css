@@ -1,0 +1,28 @@
+.filtro-container {
+  border: 2px solid purple;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.botoes-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.botoes-filtro button {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.botoes-filtro button.ativo {
+  background-color: #8000c4;
+  color: white;
+  font-weight: bold;
+}

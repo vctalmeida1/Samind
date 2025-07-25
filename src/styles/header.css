@@ -1,0 +1,101 @@
+.topbar {
+  background: #7800a8;
+  color: white;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Orelo', sans-serif;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.top-actions .buscar,
+.top-actions .login {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sub-barra {
+  background: #5a009d;
+  color: white;
+  padding: 8px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-esquerda {
+  display: flex;
+  gap: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  align-items: center;
+}
+
+
+.ajuda {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.input-busca {
+  background: #eee;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-busca input {
+  width: 240px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.input-inline {
+  width: 180px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: none;
+  background: #e5e5e5;
+  font-size: 14px;
+  transition: width 0.2s ease;
+}
+
+.input-inline:focus {
+  outline: none;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline; /* opcional, pra indicar que é clicável */
+}

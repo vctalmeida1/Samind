@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Orelo';
+  src: url('./fonts/Orelo-Expanded.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+
+.topbar {
+  background: #7800a8;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Orelo';
+}
+
+.topbar nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.topbar nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  font-size: 16px;
+}
+
+.topbar nav ul li {
+  cursor: pointer;
+}
+
+.top-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.top-actions .ajuda {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  padding: 30px 50px;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.content {
+  flex: 1;
+  min-width: 500px;
+}
+
+.pergunta-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 20px;
+  border: none;
+  background: #e5e5e5;
+  margin-bottom: 25px;
+  font-size: 16px;
+  color: #555;
+}
+
+.card-pergunta {
+  width: calc(50% - 10px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  background: #d9c4e2;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.user-icon {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #5a009d;
+}
+
+.pergunta-texto p {
+  margin: 10px 0;
+  color: #222;
+}
+
+.pergunta-texto button {
+  background: #7800a8;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.barra-inferior {
+  height: 24px;
+  background-color: #5a009d;
+  width: 100%;
+}
+
+.chat-flutuante {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #999;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid #a445c4;
+}
+
+.chat-header {
+  background: #a445c4;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-mensagens {
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mensagem {
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.mensagem.amigo {
+  background: #f0e4f8;
+  align-self: flex-start;
+}
+
+.mensagem.voce {
+  background: #d1c4e9;
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  gap: 5px;
+  border-top: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  background: #a445c4;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.button-chat {
+  background:#a445c4;
+  border: 1px solid #a445c4;
+  color: white;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.modal-materia {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-materia h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #5a009d;
+}
+
+.modal-materia ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-materia ul li {
+  background: #d9c4e2;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.modal-materia ul li:hover {
+  background: #b183c7;
+  color: white;
+}
+
+.fechar-modal {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #aaa;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
