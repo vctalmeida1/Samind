@@ -97,5 +97,63 @@ a:visited {
 }
 
 a:hover {
-  text-decoration: underline; /* opcional, pra indicar que é clicável */
+  text-decoration: underline;
+}
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.ajuda-btn {
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+}
+
+.menu-direita {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+body.dark .pergunta-input {
+  background-color: #2e2e2e;
+  color: #ffffff;
+}
+
+body.dark .pergunta-input::placeholder {
+  color: #cccccc;
+}
+
+body.dark .botoes-filtro button {
+  background-color: #2e2e2e;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+
+body.dark .botoes-filtro button:hover {
+  background-color: #3a3a3a;
 }

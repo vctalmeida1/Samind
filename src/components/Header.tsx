@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/header.css';
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [buscarAtivo, setBuscarAtivo] = useState(false);
   const [buscaTexto, setBuscaTexto] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    document.body.className = darkMode ? 'dark' : '';
+  }, [darkMode]);
+  const toggleTheme = () => setDarkMode((prev) => !prev);
   const wip = () => alert('Em construção!');
 
   return (
@@ -37,9 +42,15 @@ const Header = () => {
           <span onClick={() => alert('Em construção!')}>Professores</span>
           <span onClick={wip}>Boletim</span>
         </div>
-        <div className="ajuda" onClick={() => alert('Ajuda em construção')}>
+          <div className="menu-direita">
+            <button onClick={toggleTheme} className="theme-toggle">
+              {darkMode ? '☀️' : '🌙'}
+            </button>
+          <div className="ajuda" onClick={() => alert('Ajuda em construção')}>
           Ajuda
+          </div>
         </div>
+        
       </div>
     </>
   );
