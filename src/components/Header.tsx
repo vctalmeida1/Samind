@@ -36,25 +36,22 @@ useEffect(() => {
                🔍 Buscar
             </span>
            )}
-          <span className="login">👤</span>
+          <Link className="login" to="/login">👤</Link>
         </div>
       </div>
 
       <div className="sub-barra">
         <div className="menu-esquerda">
           <Link to="/materias">Matérias</Link>
-          <span onClick={() => alert('Em construção!')}>Professores</span>
+          <Link to="/professores">Professores</Link>
           <span onClick={wip}>Boletim</span>
         </div>
           <div className="menu-direita">
             <button onClick={toggleTheme} className="theme-toggle">
               {darkMode ? '☀️' : '🌙'}
             </button>
-          <div className="ajuda" onClick={() => alert('Ajuda em construção')}>
-          Ajuda
-          </div>
+          <Link className='ajuda' to="/ajuda">Ajuda</Link>
         </div>
-        
       </div>
     </>
   );
