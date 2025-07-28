@@ -1,69 +1,27 @@
-# React + TypeScript + Vite
+# SAMIND
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##### Criar uma plataforma digital que integre comunicação entre alunos e professores, organização de projetos escolares e suporte ao aprendizado de forma colaborativa.
+O projeto que nomeamos de *SAMIND, consiste em uma **plataforma online* voltada para o ambiente escolar, funcionando como um fórum colaborativo com foco no *auxílio aos estudos.* O site permite que os alunos façam perguntas diretamente na plataforma, que são respondidas por professores ou outros membros autorizados. Além disso, o sistema oferece ferramentas para organização de projetos escolares por matéria, possibilitando o acompanhamento do progresso de atividades e trabalhos. A proposta é criar um espaço dinâmico e funcional que una comunicação, organização e aprendizado em um único ambiente virtual, facilitando o cotidiano escolar e promovendo o engajamento dos estudantes com os conteúdos.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Funcionalidades
 
-## Expanding the ESLint configuration
+- Sistema de Perguntas e Respostas
+	> Alunos podem fazer perguntas diversas no site, e os professores de cada matéria podem responder essas perguntas.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Organização por disciplinas
+- Área para projetos e acompanhamento de progresso.
+- Notificações e atualizações em tempo real.
+- Perfis de usuários (aluno, professor, administrador).
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Público-Alvo
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+O site é direcionado para *alunos* e *professores* do ensino fundamental ao médio.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Diferenciais
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O *Samind* é uma mistura entre fórum educacional e rede social, com uma organização integrada de atividades escolares e com a participação direta dos professores no processo de aprendizado fora da sala de aula.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Tecnologias
+A Produção do site está sendo feita no Visual Studio Code com *React, JS, CSS, A estrutura do projeto React é organizada em componentes, facilitando a manutenção e a reutilização do código, além do **Figma* e *Photoshop* como ferramentas de prototipação.

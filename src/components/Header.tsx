@@ -5,10 +5,14 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [buscarAtivo, setBuscarAtivo] = useState(false);
   const [buscaTexto, setBuscaTexto] = useState('');
-  const [darkMode, setDarkMode] = useState(false);
-  useEffect(() => {
-    document.body.className = darkMode ? 'dark' : '';
-  }, [darkMode]);
+  const [darkMode, setDarkMode] = useState(() => {
+  const temaSalvo = localStorage.getItem('tema');
+  return temaSalvo === 'dark';
+});
+useEffect(() => {
+  document.body.className = darkMode ? 'dark' : '';
+  localStorage.setItem('tema', darkMode ? 'dark' : 'light');
+}, [darkMode]);
   const toggleTheme = () => setDarkMode((prev) => !prev);
   const wip = () => alert('Em construção!');
 
