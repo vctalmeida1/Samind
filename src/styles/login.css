@@ -67,3 +67,10 @@
   text-decoration: none;
   margin-top: -8px;
 }
+
+.erro-login {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -8px;
+  text-align: center;
+}

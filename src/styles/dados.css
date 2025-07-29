@@ -1,0 +1,75 @@
+.dados-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px 32px;
+  background-color: var(--bg-card, #fff);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dados-container h2 {
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  color: var(--text-color, #333);
+}
+
+.foto-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.foto-upload img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin-bottom: 8px;
+}
+
+.foto-upload input[type="file"] {
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.campos label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-color, #444);
+}
+
+.campos input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--input-bg, #f9f9f9);
+  color: var(--text-color, #333);
+}
+
+.alterar-senha {
+  margin-top: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #5a009d;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.alterar-senha:hover {
+  background-color: #5941c1;
+}
