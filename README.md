@@ -1,5 +1,7 @@
 # SAMIND
 
+https://samind.vercel.app/
+
 ##### Criar uma plataforma digital que integre comunicação entre alunos e professores, organização de projetos escolares e suporte ao aprendizado de forma colaborativa.
 O projeto que nomeamos de *SAMIND, consiste em uma **plataforma online* voltada para o ambiente escolar, funcionando como um fórum colaborativo com foco no *auxílio aos estudos.* O site permite que os alunos façam perguntas diretamente na plataforma, que são respondidas por professores ou outros membros autorizados. Além disso, o sistema oferece ferramentas para organização de projetos escolares por matéria, possibilitando o acompanhamento do progresso de atividades e trabalhos. A proposta é criar um espaço dinâmico e funcional que una comunicação, organização e aprendizado em um único ambiente virtual, facilitando o cotidiano escolar e promovendo o engajamento dos estudantes com os conteúdos.
 
