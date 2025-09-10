@@ -1,11 +1,8 @@
+// src/components/Header.tsx
 import { useState, useEffect } from 'react';
 import '../styles/header.css';
 import { Link, useNavigate } from "react-router-dom";
-
-type Usuario = {
-  tipo: 'aluno' | 'professor';
-  usuario: string;
-};
+import { useUsuario } from '../contexts/UsuarioContext';
 
 const Header = () => {
   const [buscarAtivo, setBuscarAtivo] = useState(false);
@@ -14,10 +11,11 @@ const Header = () => {
     const temaSalvo = localStorage.getItem('tema');
     return temaSalvo === 'dark';
   });
-
-  const [usuarioLogado, setUsuarioLogado] = useState<Usuario | null>(null);
   const [menuAberto, setMenuAberto] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false);
+
   const navigate = useNavigate();
+  const { usuario, tipoUsuario, logout } = useUsuario();
 
   useEffect(() => {
     document.body.className = darkMode ? 'dark' : '';
@@ -25,21 +23,27 @@ const Header = () => {
   }, [darkMode]);
 
   useEffect(() => {
-    const usuario = localStorage.getItem('usuarioLogado');
     if (usuario) {
-      setUsuarioLogado(JSON.parse(usuario));
+      setLoginSuccess(true);
+      const timer = setTimeout(() => setLoginSuccess(false), 2000);
+      return () => clearTimeout(timer);
     }
-  }, []);
+  }, [usuario]);
 
   const toggleTheme = () => setDarkMode((prev) => !prev);
 
-  const logout = () => {
-  localStorage.removeItem('usuarioLogado');
-  setUsuarioLogado(null);
-  setMenuAberto(false);
-  navigate('/');
-  };
+  const handleLogout = () => {
+    // limpa localStorage
+    localStorage.removeItem('usuarioLogado');
+    localStorage.removeItem('token');
 
+    // limpa contexto
+    logout();
+
+    // fecha menu e redireciona
+    setMenuAberto(false);
+    navigate('/');
+  };
 
   return (
     <>
@@ -62,13 +66,13 @@ const Header = () => {
             </span>
           )}
 
-          {usuarioLogado ? (
-           <div className="menu-usuario">
+          {usuario ? (
+            <div className="menu-usuario">
               <button
                 className="btn-usuario"
                 onClick={() => setMenuAberto(!menuAberto)}
               >
-                {usuarioLogado.usuario} ⌄
+                {usuario.nome} {loginSuccess && <span className="login-ok">✅</span>} ⌄
               </button>
 
               {menuAberto && (
@@ -76,10 +80,12 @@ const Header = () => {
                   <button onClick={() => { navigate('/dados'); setMenuAberto(false); }}>
                     Dados Pessoais
                   </button>
-                  <button onClick={logout}>Encerrar sessão</button>
+                  <button onClick={handleLogout}>
+                    Encerrar sessão
+                  </button>
                 </div>
               )}
-           </div>
+            </div>
           ) : (
             <Link className="login" to="/login">👤</Link>
           )}
@@ -90,12 +96,12 @@ const Header = () => {
         <div className="menu-esquerda">
           <Link to="/materias">Matérias</Link>
           <Link to="/professores">Professores</Link>
-           {usuarioLogado?.tipo === 'aluno' && (
+          {tipoUsuario === 'aluno' && (
             <Link to="/boletim">Boletim</Link>
-            )}
-           {usuarioLogado?.tipo === 'professor' && (
+          )}
+          {tipoUsuario === 'professor' && (
             <Link to="/lancar-notas">Lançar Notas</Link>
-            )}
+          )}
         </div>
         <div className="menu-direita">
           <button onClick={toggleTheme} className="theme-toggle">

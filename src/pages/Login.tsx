@@ -1,28 +1,93 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { usuariosFalsos } from '../data/UsuariosFalsos';
 import Header from '../components/Header';
 import '../styles/login.css';
+import { useUsuario } from '../contexts/UsuarioContext';
+import type { Usuario } from '../contexts/UsuarioContext';
+
+interface LoginResponse {
+  success: boolean;
+  message: string;
+  data: {
+    usuario: {
+      id: number;
+      nome: string;
+      email: string;
+      role: 'ALUNO' | 'PROFESSOR';
+      createdAt: string;
+      updatedAt: string;
+      senha?: string; // não vamos usar, mas pode vir
+    };
+    token: string;
+  };
+}
 
 const Login: React.FC = () => {
-  const [usuario, setUsuario] = useState('');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [erro, setErro] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useUsuario();
 
-  const handleLogin = () => {
-    const user = usuariosFalsos.find(
-      (u) => u.usuario === usuario && u.senha === senha
-    );
+  const handleLogin = async () => {
+    setLoading(true);
+    setErro('');
+    try {
+      const res = await fetch('https://samind-back.onrender.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha }),
+      });
 
-    if (user) {
-      localStorage.setItem('usuarioLogado', JSON.stringify(user));
+      if (!res.ok) {
+        let msg = 'Erro ao fazer login';
+        try {
+          const errData: { message?: string } = await res.json();
+          if (errData.message) msg = errData.message;
+        } catch {
+          msg = 'Erro inesperado no servidor';
+        }
+        throw new Error(msg);
+      }
+
+      const data: LoginResponse = await res.json();
+
+      // mapeia usuário retornado do backend
+      const usuarioLogado: Usuario = {
+        id: data.data.usuario.id,
+        nome: data.data.usuario.nome,
+        email: data.data.usuario.email,
+        sobrenome: '',
+        ra: data.data.usuario.role === 'ALUNO' ? `RA${data.data.usuario.id}` : undefined,
+        rf: data.data.usuario.role === 'PROFESSOR' ? `RF${data.data.usuario.id}` : undefined,
+      };
+
+      const tipo = data.data.usuario.role === 'ALUNO' ? 'aluno' : 'professor';
+
+      // atualiza contexto
+      login(usuarioLogado, tipo);
+
+      // persiste token e usuário
+      localStorage.setItem('token', data.data.token);
+      localStorage.setItem(
+        'usuarioLogado',
+        JSON.stringify({
+          usuario: usuarioLogado.nome || usuarioLogado.email,
+          tipo,
+        })
+      );
+
       navigate('/');
-    } else {
-      setErro('Usuário ou senha inválidos');
+    } catch (err: unknown) {
+      setErro(err instanceof Error ? err.message : 'Erro inesperado');
+    } finally {
+      setLoading(false);
     }
   };
+
+  const irParaRegister = () => navigate('/register');
 
   return (
     <>
@@ -32,12 +97,12 @@ const Login: React.FC = () => {
           <h2>Entrar</h2>
 
           <label>
-            Usuário
+            Email
             <input
               type="text"
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
-              placeholder="Digite seu usuário"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Digite seu email"
             />
           </label>
 
@@ -60,15 +125,18 @@ const Login: React.FC = () => {
             </div>
           </label>
 
-          <a href="#" className="esqueci-senha">
-            Esqueci minha senha
-          </a>
+          <a href="#" className="esqueci-senha">Esqueci minha senha</a>
 
           {erro && <p className="erro-login">{erro}</p>}
 
-          <button className="btn-entrar" onClick={handleLogin}>
-            Entrar
-          </button>
+          <div className="botoes-login">
+            <button className="btn-entrar" onClick={handleLogin} disabled={loading}>
+              {loading ? 'Entrando...' : 'Entrar'}
+            </button>
+            <button className="btn-registrar" onClick={irParaRegister} disabled={loading}>
+              Registrar
+            </button>
+          </div>
         </div>
       </main>
     </>

@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Dados from './pages/Dados';
 import Boletim from './pages/Boletim';
 import LancarNotas from './pages/LancarNotas';
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/professores" element={<Professores />} />
         <Route path="/ajuda" element={<Ajuda />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/dados" element={<Dados />} />
         <Route path="/boletim" element={<Boletim />} />
         <Route path="/lancar-notas" element={<LancarNotas />} />
